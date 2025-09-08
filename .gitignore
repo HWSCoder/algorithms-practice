@@ -1,0 +1,15 @@
+# Maven target 文件夹
+/target/
+
+# IntelliJ IDEA
+*.iml
+*.iws
+*.ipr
+/.idea/
+
+.DS_Store
+
+*.log
+
+*.class
+

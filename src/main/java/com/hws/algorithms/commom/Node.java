@@ -1,4 +1,4 @@
-package com.hws.algorithms;
+package com.hws.algorithms.commom;
 
 public class Node<Item> {
     public Item item;

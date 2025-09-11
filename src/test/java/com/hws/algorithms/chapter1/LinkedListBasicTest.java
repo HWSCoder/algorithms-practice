@@ -1,6 +1,6 @@
 package com.hws.algorithms.chapter1;
 
-import com.hws.algorithms.Node;
+import com.hws.algorithms.commom.Node;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

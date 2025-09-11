@@ -24,4 +24,11 @@ public class StackImplementedByLinkedList<Item> {
         first = newHeader;
         numberOfElements++;
     }
+
+    public Item peek() {
+        if (numberOfElements == 0) {
+            throw new RuntimeException("Empty stack");
+        }
+        return first.item;
+    }
 }

@@ -1,34 +1,39 @@
 package com.hws.algorithms.chapter1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
+class FixedCapacityStackTest {
 
-public class FixedCapacityStackTest {
     @Test
-    public void shouldPushAndPopCorrectly() {
-        FixedCapacityStack<String> fixedCapacityStack = new FixedCapacityStack<>(3);
-        fixedCapacityStack.push("1");
-        fixedCapacityStack.push("2");
-        fixedCapacityStack.push("3");
-
-        assertEquals(3, fixedCapacityStack.size());
-        assertEquals("3", fixedCapacityStack.pop());
-        assertEquals("2", fixedCapacityStack.pop());
-        assertEquals("1", fixedCapacityStack.pop());
-        assertTrue(fixedCapacityStack.isEmpty());
+    void pushAndSize() {
+        FixedCapacityStack<Integer> s = new FixedCapacityStack<>(3);
+        assertEquals(0, s.size());
+        s.push(1);
+        s.push(2);
+        assertEquals(2, s.size());
     }
+
     @Test
-    public void shouldThrowExceptionWhenPushTooManyItems() {
-        FixedCapacityStack<String> fixedCapacityStack = new FixedCapacityStack<>(1);
-        fixedCapacityStack.push("1");
-        assertThrows(RuntimeException.class, () -> {
-            fixedCapacityStack.push("2");
-        });
+    void popOrderAndSize() {
+        FixedCapacityStack<String> s = new FixedCapacityStack<>(3);
+        s.push("A");
+        s.push("B");
+        assertEquals("B", s.pop());
+        assertEquals("A", s.pop());
+        assertEquals(0, s.size());
     }
+
     @Test
-    public void shouldThrowExceptionWhenPopEmptyStack() {
-        FixedCapacityStack<String> fixedCapacityStack = new FixedCapacityStack<>(1);
-        assertThrows(RuntimeException.class, fixedCapacityStack::pop);
+    void popEmptyThrows() {
+        FixedCapacityStack<Integer> s = new FixedCapacityStack<>(1);
+        assertThrows(RuntimeException.class, s::pop);
+    }
+
+    @Test
+    void pushOverflowThrows() {
+        FixedCapacityStack<Integer> s = new FixedCapacityStack<>(1);
+        s.push(42);
+        assertThrows(RuntimeException.class, () -> s.push(99));
     }
 }

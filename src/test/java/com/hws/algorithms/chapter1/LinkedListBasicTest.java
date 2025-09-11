@@ -1,19 +1,19 @@
 package com.hws.algorithms.chapter1;
 
 import com.hws.algorithms.commom.Node;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class LinkedListBasicTest {
+class LinkedListBasicTest {
 
     @Test
-    public void testSizeEmptyList() {
+    void testSizeEmptyList() {
         assertEquals(0, LinkedListBasic.size(null));
     }
 
     @Test
-    public void testSizeNonEmptyList() {
+    void testSizeNonEmptyList() {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
         n1.next = n2;
@@ -21,7 +21,7 @@ public class LinkedListBasicTest {
     }
 
     @Test
-    public void testInsertAtHead() {
+    void testInsertAtHead() {
         Node n1 = new Node(1);
         Node newHead = new Node(0);
 
@@ -32,7 +32,7 @@ public class LinkedListBasicTest {
     }
 
     @Test
-    public void testAppendAtTail() {
+    void testAppendAtTail() {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
         n1.next = n2;
@@ -46,7 +46,7 @@ public class LinkedListBasicTest {
     }
 
     @Test
-    public void testAppendAtTailEmptyList() {
+    void testAppendAtTailEmptyList() {
         Node n1 = new Node(1);
         Node head = LinkedListBasic.appendAtTail(null, n1);
 

@@ -43,11 +43,11 @@ class UFFileTest {
         assertEquals(3, uf.count());
     }
     @Test
-    void testLargeUFWithQuickFind() throws FileNotFoundException {
-        File file = new File("download large file from website and save to local");
-        Scanner scanner = new Scanner(file);
+    void testTinyUFWithQuickUnion() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("src/test/resources/tinyUF.txt"));
+
         int n = scanner.nextInt();
-        QuickFindUF uf = new QuickFindUF(n);
+        QuickUnionUF uf = new QuickUnionUF(n);
 
         while (scanner.hasNextInt()) {
             int p = scanner.nextInt();
@@ -56,6 +56,23 @@ class UFFileTest {
         }
 
         // tinyUF.txt should result in 2 components
-        assertEquals(6, uf.count());
+        assertEquals(2, uf.count());
+    }
+
+    @Test
+    void testMediumUFWithQuickUnion() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("src/test/resources/mediumUF.txt"));
+
+        int n = scanner.nextInt();
+        QuickUnionUF uf = new QuickUnionUF(n);
+
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
+            uf.union(p, q);
+        }
+
+        // tinyUF.txt should result in 2 components
+        assertEquals(3, uf.count());
     }
 }

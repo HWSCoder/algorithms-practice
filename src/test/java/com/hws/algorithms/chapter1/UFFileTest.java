@@ -109,11 +109,26 @@ class UFFileTest {
         assertEquals(3, uf.count());
     }
     @Test
-    void testLargeUFWithQuickFind() throws FileNotFoundException {
+    void testLargeUFWithWeightedQuickFind() throws FileNotFoundException {
         File file = new File("/Users/weisheng/Desktop/largeUF.txt");
         Scanner scanner = new Scanner(file);
         int n = scanner.nextInt();
         WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
+
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
+            uf.union(p, q);
+        }
+
+        assertEquals(6, uf.count());
+    }
+    @Test
+    void testLargeUFWithPathCompressionQuickFind() throws FileNotFoundException {
+        File file = new File("/Users/weisheng/Desktop/largeUF.txt");
+        Scanner scanner = new Scanner(file);
+        int n = scanner.nextInt();
+        PathCompressionUF uf = new PathCompressionUF(n);
 
         while (scanner.hasNextInt()) {
             int p = scanner.nextInt();

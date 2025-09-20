@@ -75,4 +75,52 @@ class UFFileTest {
         // tinyUF.txt should result in 2 components
         assertEquals(3, uf.count());
     }
+    @Test
+    void testTinyUFWithWeightedQuickUnion() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("src/test/resources/tinyUF.txt"));
+
+        int n = scanner.nextInt();
+        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
+
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
+            uf.union(p, q);
+        }
+
+        // tinyUF.txt should result in 2 components
+        assertEquals(2, uf.count());
+    }
+
+    @Test
+    void testMediumUFWithWeightedQuickUnion() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("src/test/resources/mediumUF.txt"));
+
+        int n = scanner.nextInt();
+        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
+
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
+            uf.union(p, q);
+        }
+
+        // tinyUF.txt should result in 2 components
+        assertEquals(3, uf.count());
+    }
+    @Test
+    void testLargeUFWithQuickFind() throws FileNotFoundException {
+        File file = new File("/Users/weisheng/Desktop/largeUF.txt");
+        Scanner scanner = new Scanner(file);
+        int n = scanner.nextInt();
+        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(n);
+
+        while (scanner.hasNextInt()) {
+            int p = scanner.nextInt();
+            int q = scanner.nextInt();
+            uf.union(p, q);
+        }
+
+        assertEquals(6, uf.count());
+    }
 }

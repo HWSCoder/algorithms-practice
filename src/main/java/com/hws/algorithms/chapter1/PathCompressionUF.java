@@ -39,10 +39,9 @@ public class PathCompressionUF {
      * Returns the root of element p, with path compression.
      */
     public int find(int p) {
-        while (p != id[p]) {
+        if (p != id[p]) {
             // 路径压缩：直接让p指向自己的根节点
             id[p] = find(id[p]);
-            p = id[p];
         }
         return p;
     }
